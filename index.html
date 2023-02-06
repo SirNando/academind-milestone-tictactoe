@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NandoPC Tic-Tac-Toe</title>
+    <!-- Code Next Font -->
+    <link rel="stylesheet" href="/Fonts/Code Next/stylesheet.css" />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- JS Logic -->
+    <script src="logic.js" defer></script>
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link rel="icon" type="image/png" href="/favicon/favicon.ico">
+  </head>
+  <body>
+    <section id="name-change-overlay">
+      <form id="name-form">
+        <label for="player-name-input">Set player x's name</label>
+        <input type="text" id="player-name-input" name="playername" required />
+        <button>Confirm name</button>
+      </form>
+    </section>
+    <header>
+      <h1>Nando's Official Online Tic-Tac-Toe</h1>
+    </header>
+    <main>
+      <section id="name-input">
+        <h2>Name your fighters</h2>
+        <ul>
+          <li class="player-card">
+            <h3>Player X</h3>
+            <p>First Player</p>
+            <a id="first-player-edit-button">Edit</a>
+          </li>
+          <li class="player-card">
+            <h3>Player O</h3>
+            <p>Second Player</p>
+            <a id="second-player-edit-button">Edit</a>
+          </li>
+        </ul>
+        <button id="start-game">Start Game</button>
+      </section>
+      <section id="player-turn">
+        <p>
+          It's <strong><span>playername</span></strong
+          >'s turn
+        </p>
+      </section>
+      <section id="gameplay">
+        <div id="board">
+          <div id="sq1" class="boardsq"></div>
+          <div id="sq2" class="boardsq"></div>
+          <div id="sq3" class="boardsq"></div>
+          <div id="sq4" class="boardsq"></div>
+          <div id="sq5" class="boardsq"></div>
+          <div id="sq6" class="boardsq"></div>
+          <div id="sq7" class="boardsq"></div>
+          <div id="sq8" class="boardsq"></div>
+          <div id="sq9" class="boardsq"></div>
+        </div>
+      </section>
+<!--       <section id="results">
+        <div>
+          <div id="winner-plate">
+            <h3>Nando wins! Fatality!</h3>
+          </div>
+          <div id="scoreboard">
+            <p>Nando has 10 points</p>
+            <p>Other has 5 points</p>
+          </div>
+        </div>
+      </section> -->
+    </main>
+  </body>
+</html>

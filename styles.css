@@ -1,0 +1,245 @@
+html {
+  --nandoblack: rgb(28, 32, 60);
+  --nandowhite900: rgb(255, 255, 255);
+  --nandowhite850: rgb(240, 240, 240);
+  --nandowhite800: rgb(220, 220, 220);
+  --nandopurple: rgb(160, 56, 122);
+  --nandopurplelight: rgb(253, 178, 225);
+}
+
+body {
+  font-family: /* Code Next-Trial,  */ sans-serif;
+  background-color: var(--nandoblack);
+  color: var(--nandoblack);
+}
+
+header h1 {
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto;
+  width: 70%;
+  color: var(--nandowhite900);
+}
+
+main {
+  margin: 1rem auto;
+  padding: 1rem;
+  padding-top: 0.7rem;
+  width: 50%;
+  background-color: var(--nandopurple);
+  border-radius: 8px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+#name-change-overlay {
+  position: fixed;
+  display: none;
+  justify-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  top: 0;
+  left: 0;
+}
+
+#name-change-overlay form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--nandowhite900);
+  margin: auto;
+  width: 30%;
+  height: auto;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+#name-change-overlay label {
+  margin: inherit;
+  font-size: 2rem;
+}
+
+#name-change-overlay input {
+  margin: inherit;
+  margin-top: 1rem;
+  width: 50%;
+  height: 2rem;
+  font-size: 2rem;
+}
+
+#name-change-overlay button {
+  margin: inherit;
+  border: 1px solid var(--nandoblack);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+  margin-top: 1rem;
+  padding: 0.3rem 0.4rem;
+  font-size: 1.5rem;
+  background-color: var(--nandopurplelight);
+  transition: background-color 0.5s, box-shadow 0.5s;
+}
+
+#name-change-overlay button:hover {
+  background-color: var(--nandopurple);
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+#name-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+#name-input h2 {
+  align-self: center;
+  color: var(--nandoblack);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  background-color: var(--nandowhite900);
+}
+
+#name-input ul {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 2rem;
+}
+
+#start-game {
+  width: fit-content;
+  align-self: center;
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  border: none;
+  font-size: 2.3rem;
+  color: var(--nandoblack);
+  background-color: var(--nandowhite900);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.5s;
+}
+
+#start-game:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.9);
+}
+
+#player-turn {
+    display: none;
+    justify-content: center;
+    margin: 1rem auto;
+    width: 45%;
+    border-radius: 10px;
+    background-color: var(--nandopurplelight);
+    color: var(--nandoblack);
+    font-size: 1.3rem;
+}
+
+#player-turn span {
+    color: var(--nandopurple);
+}
+
+#gameplay {
+  display: none;
+  justify-content: center;
+}
+
+#board {
+  display: grid;
+  width: fit-content;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: var(--nandopurplelight);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+#results {
+  display: flex;
+  justify-content: center;
+  background-color: var(--nandowhite900);
+  width: 50%;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  margin-bottom: 0;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+#results div {
+  display: flex;
+  flex-direction: column;
+}
+
+#scoreboard {
+  margin-top: 1rem;
+}
+
+#scoreboard p {
+  margin: 0.5rem auto;
+}
+
+#winner-plate h3 {
+  margin: 0;
+}
+
+.player-card {
+  background-color: var(--nandowhite900);
+  padding: 0.6rem;
+  width: 30%;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.5s;
+}
+
+.player-card h3 {
+  margin: 0.2rem auto;
+}
+
+.player-card p {
+  margin: 0.2rem auto;
+  font-size: 2rem;
+}
+
+.player-card a {
+  text-decoration: none;
+  color: var(--nandopurple);
+  display: block;
+  margin: 0.2rem auto;
+  margin-bottom: 0.5rem;
+}
+
+.player-card:hover {
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.player-card a:hover {
+  cursor: pointer;
+}
+
+.boardsq {
+  background-color: var(--nandowhite900);
+  width: 5rem;
+  height: 5rem;
+}
+
+.boardsq svg {
+  width: 4rem;
+  height: auto;
+  padding: 0.5rem;
+}
+
+.boardsq:hover {
+  background-color: var(--nandowhite800);
+  cursor: pointer;
+}
