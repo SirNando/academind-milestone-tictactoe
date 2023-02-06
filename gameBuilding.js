@@ -1,76 +1,13 @@
-console.dir(document.body);
-
-let secondPlayerGame = [];
-let winningGames;
-let winnerName;
-let enteredPlayerName;
-let playerNumberDisplay; //Either "Player X" or "Player O" which shows in the cards
-let playerNameDisplay; //Name for player which shows in their respective cards
-let firstPlayerName = "First Player";
-let firstPlayerGame = [];
-let secondPlayerName = "Second Player";
-const editFirstName = document.getElementById("first-player-edit-button");
-const editSecondName = document.getElementById("second-player-edit-button");
-const nameChangeOverlay = document.getElementById("name-change-overlay");
-const nameChangeOverlayButton = document.querySelector(
-  "#name-change-overlay button"
-);
 const startGameButton = document.getElementById("start-game");
 const gameBoard = document.getElementById("gameplay");
 const playerTurn = document.getElementById("player-turn");
 const playerTurnName = document.querySelector("#player-turn span");
+
+let winningGames;
+let winnerName;
+
 let turn = "playerX"; //Determines which player's turn it is, by default X
 let squares; //Declaring squares as a global variable, which holds all 9 squares in the board
-
-//Code for handling the name form
-const gameForm = document.getElementById("name-form");
-function savePlayerConfig(event) {
-  event.preventDefault();
-  const formData = new FormData(event.target);
-  enteredPlayerName = formData.get("playername");
-  closeNameChangeOverlay();
-}
-gameForm.addEventListener("submit", savePlayerConfig);
-
-function openNameChangeOverlay(event) {
-  //Grab "Player O" or "Player X"
-  playerNumberDisplay =
-    event.target.previousElementSibling.previousElementSibling;
-  //Grab player's current name
-  playerNameDisplay = event.target.previousElementSibling;
-  //Grab paragraph on overlay to display which player will change name
-  const playerNameChangeHelper = document.querySelector(
-    "#name-change-overlay label"
-  );
-  //Grab input field on overlay
-  const playerNameChangeInputValue = document.querySelector(
-    "#name-change-overlay input"
-  );
-
-  //Sets text to display correct player name to be changed
-  if (playerNumberDisplay.textContent == "Player X") {
-    playerNameChangeHelper.textContent = "Set Player X's name";
-  } else {
-    playerNameChangeHelper.textContent = "Set Player O's name";
-  }
-  console.dir(playerNameDisplay.textContent);
-  playerNameChangeInputValue.value = playerNameDisplay.textContent;
-  //Make name change overlay visible
-  nameChangeOverlay.style.display = "flex";
-}
-
-function closeNameChangeOverlay() {
-  playerNameDisplay.textContent = enteredPlayerName;
-  if (playerNumberDisplay.textContent == "Player X") {
-    firstPlayerName = enteredPlayerName;
-  } else {
-    secondPlayerName = enteredPlayerName;
-  }
-  //We save the name the user determined for a player and we save it on playerName
-  /* let playerName = document.querySelector(".player-card p");
-  playerName.textContent = enteredPlayerName; */
-  nameChangeOverlay.style.display = "none";
-}
 
 function playerWon(playergame) {
   if (playergame.length < 3) {
@@ -105,6 +42,12 @@ function playerWon(playergame) {
   }
 }
 
+function removeListeners() {
+  for (element of squares) {
+    element.removeEventListener("click", modifySquare);
+  }
+}
+
 //For every square clicked we add the corresponding symbol to it, switch turns and check wether one player won or not
 function modifySquare(event) {
   if (turn == firstPlayerName) {
@@ -121,6 +64,7 @@ function modifySquare(event) {
 
     //Check if playerX won
     if (playerWon(firstPlayerGame)) {
+      removeListeners();
       playerTurnName.parentElement.parentElement.parentElement.innerHTML =
         "<p><strong><span></span></strong> wins! Fatality!</p>";
       winnerName = document.querySelector("#player-turn span");
@@ -134,6 +78,7 @@ function modifySquare(event) {
     turn = firstPlayerName;
     playerTurnName.textContent = firstPlayerName;
     if (playerWon(secondPlayerGame)) {
+      removeListeners();
       playerTurnName.parentElement.parentElement.parentElement.innerHTML =
         "<p><strong><span></span></strong> wins! Fatality!</p>";
       winnerName = document.querySelector("#player-turn span");
@@ -175,25 +120,4 @@ function showGameBoard() {
   buildGameBoard();
 }
 
-editFirstName.addEventListener("click", openNameChangeOverlay);
-editSecondName.addEventListener("click", openNameChangeOverlay);
-/* nameChangeOverlayButton.addEventListener("click", closeNameChangeOverlay); */
 startGameButton.addEventListener("click", showGameBoard);
-
-/* 
-We have a board with three columns and each column has 3 rows
-We execute firstPlayerTurn,
-Which adds an event listener to every square that has not been played
-Played square means that its value is false
-
-
-Board structure:
-
-let board = [column, column, column];
-let boardColumn {
-  sq1: false,
-  sq2: false,
-  sq3: false,
-};
-
-*/
